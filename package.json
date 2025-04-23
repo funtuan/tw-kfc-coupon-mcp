@@ -1,0 +1,37 @@
+{
+  "name": "@funtuantw/tw-kfc-coupon-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "tw-kfc-coupon-mcp": "build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [
+    "kfc",
+    "coupon",
+    "mcp",
+    "taiwan"
+  ],
+  "author": "funtuan<hank85627@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "npx tsc",
+    "dev:server": "npm run build & npx @modelcontextprotocol/inspector node ./build/server.js",
+    "start:server": "node build/server.js",
+    "start:client": "node build/main.js",
+    "npm:deploy": "npm run build && npm publish --access public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "axios": "^1.8.4",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}
