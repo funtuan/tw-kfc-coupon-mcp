@@ -109,8 +109,27 @@ class CouponServer {
             {
               "type": "text",
               "text": JSON.stringify({
-                message: `Found ${filteredCoupons.length} coupons`,
+                count: filteredCoupons.length,
                 coupons: filteredCoupons
+                  // 移除 id、product_code
+                  .map(coupon => ({
+                    ...coupon,
+                    items: coupon.items?.map(item => ({
+                      ...item,
+                      /* flavors: item.flavors?.map(flavor => ({
+                        ...flavor,
+                        // 若加價品價格為 0，則移除
+                        addition_price: flavor.addition_price === 0 ? undefined : flavor.addition_price,
+                      })), */
+                      flavors: undefined,
+                      // 若加價品價格為 0，則移除
+                      addition_price: item.addition_price === 0 ? undefined : item.addition_price,
+                    })),
+                    id: undefined,
+                    product_code: undefined,
+                  }))
+                  // 只回應 20 筆
+                  .slice(0, 20),
               })
             }
           ],
