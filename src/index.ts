@@ -123,7 +123,6 @@ class CouponServer {
     // 使用標準輸入輸出作為傳輸層
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-    console.log("Taiwan KFC coupon server started");
   }
 }
 
